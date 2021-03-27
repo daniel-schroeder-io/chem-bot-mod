@@ -17,10 +17,6 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, userstate, message, self) => {
-  setInterval(() => {
-    client.say(channel, `Hey @realKingChemist rocks!`);
-  }, 5000);
-
 
 	// Ignore echoed messages.
 	if(self) return;
