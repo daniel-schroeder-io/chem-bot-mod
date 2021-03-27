@@ -13,10 +13,15 @@ const client = new tmi.Client({
 	},
 	channels: [ process.env.CHANNEL ]
 });
+var minutes = 1;
+var the_interval = minutes * 60 * 1000;
 
 client.connect();
-
 client.on('message', (channel, userstate, message, self) => {
+
+  setInterval(function() {
+    client.say(channel, `POGGERS! POGGERS! POGGERS! GIVE ${process.env.BROADCASTER_TAG} SOME HYPE!`);
+  }, the_interval);
 
 	// Ignore echoed messages.
 	if(self) return;
