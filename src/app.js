@@ -17,11 +17,16 @@ var minutes = 1;
 var the_interval = minutes * 60 * 1000;
 
 client.connect();
-client.on('message', (channel, userstate, message, self) => {
 
+client.on('connected', (address, port) => {
   setInterval(function() {
     client.say(channel, `POGGERS! POGGERS! POGGERS! GIVE ${process.env.BROADCASTER_TAG} SOME HYPE!`);
   }, the_interval);
+});
+
+client.on('message', (channel, userstate, message, self) => {
+
+
 
 	// Ignore echoed messages.
 	if(self) return;
