@@ -17,13 +17,6 @@ var minutes = 1;
 var the_interval = minutes * 60 * 1000;
 
 client.connect();
-client.on('roomstate', (channel, state) => {
-  console.log('HERE');
-  console.log(state)
-  setInterval(function() {
-    client.say(channel, `POGGERS! POGGERS! POGGERS! GIVE ${process.env.BROADCASTER_TAG} SOME HYPE!`);
-  }, the_interval);
-}) 
 
 client.on('message', (channel, userstate, message, self) => {
 
