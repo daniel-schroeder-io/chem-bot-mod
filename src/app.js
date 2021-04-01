@@ -25,6 +25,19 @@ client.on('message', async (channel, userstate, message, self) => {
 	// Ignore echoed messages.
 	if(self) return;
 
+  if(message.toLowerCase() === "!help"){
+    client.say(channel, 
+     `
+     !so [@user] - shoutout a fellow twitch streamer |
+     !addquote [quote] - add a new quote to the list |
+     !quote - display a random quote from the list |
+     !pc / !specs - check out King Chemist's set up and equipment |
+     !waterbottle - check out King Chemist's REUSABLE, SUSTAINABLE water bottle setup |
+     !music - Check out King Chemist's music links
+     `);
+  }
+
+
   if(message.match(addQuoteRegex))
   { 
     let quotes = JSON.parse(fs.readFileSync('./assets/quotes.json')); 
@@ -44,7 +57,6 @@ client.on('message', async (channel, userstate, message, self) => {
   {
     let quotes = JSON.parse(fs.readFileSync('./assets/quotes.json')); 
     let q = quotes[Math.floor(Math.random() * quotes.length)];
-    console.log(q);
     client.say(channel, q.value);
   }
 
@@ -87,7 +99,7 @@ client.on('message', async (channel, userstate, message, self) => {
   }
 
   // If i get tagged, tell people what to do
-  if(message.toLowerCase().includes(`@${process.env.USERNAME}`)) {
+  if(message.toLowerCase().includes(`@${process.env.USERNAME.toLowerCase()}`)) {
     client.say(channel, `Hey beautiful :)`);
   }
 
