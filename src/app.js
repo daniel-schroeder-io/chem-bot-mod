@@ -3,7 +3,8 @@ const { getLastStreamedGameByName } = require('./api');
 require('dotenv').config()
 const axios = require('axios');
 const tmi = require('tmi.js');
-
+const fs = require('fs');
+ 
 let wincount = 0;
 const client = new tmi.Client({
 	options: { debug: true },
@@ -15,7 +16,7 @@ const client = new tmi.Client({
 	channels: [ process.env.CHANNEL ]
 });
 const shoutoutRegex = /(!so) (@[a-zA-Z]+)/g;
-
+const addQuoteRegex = /(!addquote) [a-zA-Z ]+/g;
 
 client.connect();
 
@@ -24,6 +25,30 @@ client.on('message', async (channel, userstate, message, self) => {
 	// Ignore echoed messages.
 	if(self) return;
 
+  if(message.match(addQuoteRegex))
+  { 
+    let quotes = JSON.parse(fs.readFileSync('./assets/quotes.json')); 
+    var date = new Date(0);
+    date.setUTCSeconds(Date.now());
+    let newQuote = { 
+      value: message.split('!addquote ')[1],
+      dateCreated: date.toLocaleString(), 
+      createdBy: userstate['display-name']
+    };
+    quotes.push(newQuote);
+    fs.writeFileSync('./assets/quotes.json', JSON.stringify(quotes)); 
+  }
+
+
+  if(message.toLowerCase() === '!quote')
+  {
+    let quotes = JSON.parse(fs.readFileSync('./assets/quotes.json')); 
+    let q = quotes[Math.floor(Math.random() * quotes.length)];
+    console.log(q);
+    client.say(channel, q.value);
+  }
+
+  
   //shoutout
   if(message.match(shoutoutRegex))
   {
