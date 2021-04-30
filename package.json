@@ -10,10 +10,13 @@
   "author": "Daniel Schroeder <me@danielschroeder.org>",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.879.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "fs": "^0.0.1-security",
+    "node-uuid": "^1.4.8",
+    "pg": "^8.6.0",
     "tmi.js": "^1.7.5",
     "twitch": "^4.5.3",
     "twitch-auth": "^4.5.3"

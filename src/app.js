@@ -15,7 +15,7 @@ const client = new tmi.Client({
 	},
 	channels: [ process.env.CHANNEL ]
 });
-const shoutoutRegex = /(!so) (@[a-zA-Z0-9]+)/g;
+const shoutoutRegex = /(!so) (@[a-zA-Z0-9_]+)/g;
 const addQuoteRegex = /(!addquote) [a-zA-Z ]+/g;
 
 client.connect();
