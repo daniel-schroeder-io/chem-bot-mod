@@ -138,5 +138,10 @@ client.on('message', async (channel, userstate, message, self) => {
       console.log(error);
     });
 	}
+
+// Music Plug
+if(message.toLowerCase() === '!raid') {
+  client.say(channel, ` ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL`);
+}
  
 });
