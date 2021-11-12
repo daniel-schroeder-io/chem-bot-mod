@@ -91,6 +91,11 @@ client.on('message', async (channel, userstate, message, self) => {
       Be Quiet! BK008 Pure Rock Slim CPU Cooler |
       Corsair RM650x Power Supply`)
   }
+  
+  if(message.toLowerCase() === '!bitcrush')
+  {
+    client.say(channel, `MOAR BITCRUSH`); 
+  }
 
   if(message.toLowerCase() === '!waterbottle')
   {
@@ -139,9 +144,9 @@ client.on('message', async (channel, userstate, message, self) => {
     });
 	}
 
-// Music Plug
-if(message.toLowerCase() === '!raid') {
-  client.say(channel, ` ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL`);
-}
- 
+  // Music Plug
+  if(message.toLowerCase() === '!raid') {
+    client.say(channel, `ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL ITS A CHEMICAL EMERGENCY. realki33LUL`);
+  }
+
 });
